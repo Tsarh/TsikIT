@@ -2,9 +2,9 @@
 // Pour mettre à jour le site, il suffit la plupart du temps de modifier ce fichier.
 
 export const contact = {
-  email: 'contact@tsikit.mg', // ← à remplacer par votre adresse réelle
-  telephone: '+261 00 00 000 00', // ← à remplacer
-  telephoneLien: '+261000000000', // même numéro, sans espaces, pour le lien tel:
+  email: 'antsatiana.razakamahefa@gmail.com', // ← à remplacer par votre adresse réelle
+  telephone: '+261 34 19 687 60', // ← à remplacer
+  telephoneLien: '+261341968760', // même numéro, sans espaces, pour le lien tel:
   ville: 'Antananarivo, Madagascar',
 }
 

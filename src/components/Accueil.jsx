@@ -1,5 +1,6 @@
 import { maquettes, sitesEnLigne } from '../data/site'
 import { asset } from './utils'
+import Compteur from './Compteur'
 
 const travaux = [...maquettes, ...sitesEnLigne]
 
@@ -35,15 +36,15 @@ export default function Accueil() {
 
             <div className="hero__meta">
               <div>
-                <b>7 maquettes</b>
+                <Compteur valeur={7} suffixe=" maquettes" />
                 conçues et prototypées sur Figma
               </div>
               <div>
-                <b>3 sites</b>
+                <Compteur valeur={3} suffixe=" sites" />
                 développés et en ligne
               </div>
               <div>
-                <b>2 développeurs</b>
+                <Compteur valeur={2} suffixe=" développeurs" />
                 que vous avez directement au bout du fil
               </div>
             </div>
@@ -55,7 +56,7 @@ export default function Accueil() {
         <div className="bandeau__piste">
           {[...travaux, ...travaux].map((projet, i) => (
             <figure className="bandeau__vignette" key={`${projet.nom}-${i}`}>
-              <img src={asset(projet.image)} alt="" loading="lazy" decoding="async" />
+              <img src={asset(projet.desktop)} alt="" loading="lazy" decoding="async" />
             </figure>
           ))}
         </div>

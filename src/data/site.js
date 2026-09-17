@@ -14,6 +14,7 @@ export const equipe = [
     prenom: 'Tsaroana Ny Aina Fandresena',
     nom: 'Razafimampianina',
     role: 'Développement full-stack & automatisation',
+    photo: 'team/tsaroana.webp',
     resume:
       "Il construit ce qui doit tourner tout seul : pipelines de prospection, scraping, enrichissement de bases, intégrations d'API. Master 1 d'informatique multimédia et intelligence artificielle à l'ISPM.",
     parcours: [
@@ -53,6 +54,7 @@ export const equipe = [
     prenom: 'Antsatiana Edena',
     nom: 'Razakamahefa',
     role: 'Développement web & mobile, design et multimédia',
+    photo: 'team/antsatiana.webp',
     resume:
       "Il fait le pont entre le code et l'image : interfaces web et mobile, maquettes, identité visuelle, montage vidéo. Master 1 IMTICIA à l'ISPM.",
     parcours: [
@@ -131,11 +133,14 @@ export const services = [
   },
 ]
 
+// Chaque maquette a une capture desktop et une capture mobile séparées :
+// c'est ce qui permet la bascule d'aperçu sur les cartes du portfolio.
 export const maquettes = [
   {
     nom: 'Pretty Woman 77',
     lieu: 'Chelles',
-    image: 'work/pretty-woman.webp',
+    desktop: 'work/pretty-woman-desktop.webp',
+    mobile: 'work/pretty-woman-mobile.webp',
     texte:
       "Prêt-à-porter féminin de quartier. La maquette met en avant le service de relooking et la prise de contact directe par WhatsApp, avant même le catalogue.",
     url: 'https://www.figma.com/design/v2T63vkaFhYkhiVxl2J11D/pretty-woman',
@@ -143,7 +148,8 @@ export const maquettes = [
   {
     nom: 'La Chiffonnerie',
     lieu: 'Chelles',
-    image: 'work/chiffonnerie.webp',
+    desktop: 'work/chiffonnerie-desktop.webp',
+    mobile: 'work/chiffonnerie-mobile.webp',
     texte:
       'Atelier de confection et prêt-à-porter. Nouveautés de la semaine, sur-mesure et horaires, dans une mise en page volontairement calme.',
     url: 'https://www.figma.com/design/VARvfE48v6FkHxhCc12nox/Chiffonnerie',
@@ -151,7 +157,8 @@ export const maquettes = [
   {
     nom: 'New Fashion',
     lieu: 'Chelles',
-    image: 'work/new-fashion.webp',
+    desktop: 'work/new-fashion-desktop.webp',
+    mobile: 'work/new-fashion-mobile.webp',
     texte:
       'Vestiaire urbain, direction sombre et contrastée. Un bandeau promotionnel permanent et des pages pensées pour vendre la tenue complète.',
     url: 'https://www.figma.com/design/z153lmcxAGJYBKBW2gRJ8l/New-fashion',
@@ -159,7 +166,8 @@ export const maquettes = [
   {
     nom: "L'Armoire de Soso",
     lieu: 'Bry-sur-Marne',
-    image: 'work/armoire-de-soso.webp',
+    desktop: 'work/armoire-de-soso-desktop.webp',
+    mobile: 'work/armoire-de-soso-mobile.webp',
     texte:
       "Click & collect pour une boutique locale : on réserve en ligne, on essaie et on paie sur place. Typographie large et parcours réduit à l'essentiel.",
     url: 'https://www.figma.com/design/WQ7nD0wH1QpKJllUlixkhj/Untitled',
@@ -167,7 +175,8 @@ export const maquettes = [
   {
     nom: 'Boutique Evidence',
     lieu: 'Coulommiers',
-    image: 'work/boutique-evidence.webp',
+    desktop: 'work/boutique-evidence-desktop.webp',
+    mobile: 'work/boutique-evidence-mobile.webp',
     texte:
       'Un lookbook plutôt qu’un catalogue : la silhouette complète de la semaine, à réserver en ligne puis à essayer en boutique sans obligation d’achat.',
     url: 'https://www.figma.com/design/JTJYCB43fafo5keinU1W4A/boutique-evidence',
@@ -175,45 +184,52 @@ export const maquettes = [
   {
     nom: 'La Malle aux Affaires',
     lieu: 'Argenteuil',
-    image: 'work/malle-aux-affaires.webp',
+    desktop: 'work/malle-aux-affaires-desktop.webp',
     texte:
       'Dépôt-vente et pièces vintage. Les arrivages datés et le prix unique structurent toute la page : ici, ce qui compte est ce qui vient d’arriver.',
     url: 'https://www.figma.com/design/kTswwAh7Pjx1vDWNPxpYNd/la-malle-aux-affaires',
+    vedette: true,
   },
   {
     nom: "L'Atelier de la Mode",
     lieu: 'Clichy',
-    image: 'work/atelier-de-la-mode.webp',
+    desktop: 'work/atelier-de-la-mode-desktop.webp',
+    mobile: 'work/atelier-de-la-mode-mobile.webp',
     texte:
       'Boutique indépendante. Grande image d’ouverture, texte rare, beaucoup de vide : la maquette raconte le lieu avant de présenter les pièces.',
     url: 'https://www.figma.com/design/uvOuqzE7YE4BhDKmnYxL96/atelier-de-la-mode',
   },
 ]
 
+// Le nom du dépôt suit le nom utilisé dans l'URL GitHub Pages : à vérifier
+// avant mise en ligne si un dépôt a un nom différent de son adresse Pages.
 export const sitesEnLigne = [
   {
     nom: 'Ouvrage',
     lieu: 'Librairie en ligne',
-    image: 'work/ouvrage.webp',
+    desktop: 'work/ouvrage.webp',
     texte:
       'Catalogue de librairie avec recherche, filtres par genre, favoris et panier. Interface sombre pour laisser les couvertures porter la couleur.',
     url: 'https://tsarh.github.io/Ouvrage/',
+    code: 'https://github.com/Tsarh/Ouvrage',
   },
   {
     nom: 'Hôtel de Ville',
     lieu: 'Hôtel & spa',
-    image: 'work/hotel-de-ville.webp',
+    desktop: 'work/hotel-de-ville.webp',
     texte:
       'Site d’hôtel construit autour d’une vidéo plein écran, avec hébergement, restaurant, services et parcours de réservation.',
     url: 'https://tsarh.github.io/Hotel-de-ville/',
+    code: 'https://github.com/Tsarh/Hotel-de-ville',
   },
   {
     nom: 'Fashion',
     lieu: 'Boutique de mode',
-    image: 'work/fashion.webp',
+    desktop: 'work/fashion.webp',
     texte:
       'Boutique de prêt-à-porter : carrousel d’ouverture, rayons femme, homme, accessoires et chaussures, panier et promotions.',
     url: 'https://tsarh.github.io/fashion/',
+    code: 'https://github.com/Tsarh/fashion',
   },
 ]
 

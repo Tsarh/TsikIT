@@ -1,5 +1,5 @@
 import { equipe } from '../data/site'
-import { useReveler } from './utils'
+import { asset, useReveler } from './utils'
 
 export default function Studio() {
   const [ref, classe] = useReveler()
@@ -29,10 +29,13 @@ export default function Studio() {
           <div className="studio">
             {equipe.map((membre) => (
               <article className="membre" key={membre.id}>
-                <h3 className="membre__nom">
-                  {membre.prenom} {membre.nom}
-                  <small>{membre.role}</small>
-                </h3>
+                <div className="membre__entete">
+            
+                  <h3 className="membre__nom">
+                    {membre.prenom} {membre.nom}
+                    <small>{membre.role}</small>
+                  </h3>
+                </div>
 
                 <p className="membre__resume">{membre.resume}</p>
 

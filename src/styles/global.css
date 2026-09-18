@@ -1170,3 +1170,385 @@ textarea {
     transform: none !important;
   }
 }
+
+/* =========================================================
+   COUCHE D'ANIMATIONS ATTRACTIVES
+   ========================================================= */
+
+/* — Curseur glow (créé via JS) — */
+.curseur-glow {
+  position: fixed;
+  top: 0; left: 0;
+  width: 340px; height: 340px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  background: radial-gradient(
+    circle,
+    rgba(217, 164, 65, 0.09) 0%,
+    rgba(126, 154, 153, 0.04) 40%,
+    transparent 70%
+  );
+  transition: width 0.4s ease, height 0.4s ease;
+  mix-blend-mode: screen;
+  will-change: transform;
+}
+
+.curseur-glow--grand {
+  width: 560px;
+  height: 560px;
+}
+
+/* — Fond animé hero (aurora) — */
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 55% at 15% 25%, rgba(217,164,65,0.09) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 70% at 85% 75%, rgba(126,154,153,0.07) 0%, transparent 55%),
+    radial-gradient(ellipse 40% 40% at 50% 50%, rgba(217,164,65,0.04) 0%, transparent 50%);
+  animation: aurora 14s ease-in-out infinite alternate;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes aurora {
+  0%   { opacity: 0.6; transform: scale(1) translate(0, 0); }
+  33%  { opacity: 1;   transform: scale(1.06) translate(18px, -12px); }
+  66%  { opacity: 0.8; transform: scale(0.97) translate(-14px, 8px); }
+  100% { opacity: 0.6; transform: scale(1.03) translate(8px, -6px); }
+}
+
+.hero .page,
+.hero .bandeau {
+  position: relative;
+  z-index: 1;
+}
+
+/* — Particules flottantes hero (créées via JS) — */
+.hero__particules {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.hero__particule {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--ocre);
+  opacity: 0;
+  animation: particule-float linear infinite;
+}
+
+@keyframes particule-float {
+  0%   { opacity: 0;   transform: translateY(0) scale(0.3); }
+  12%  { opacity: 0.55; }
+  85%  { opacity: 0.15; }
+  100% { opacity: 0;   transform: translateY(-140px) scale(1.6) rotate(180deg); }
+}
+
+/* — Hero titre : mot italic en dégradé animé — */
+.hero__titre i {
+  background: linear-gradient(
+    90deg,
+    var(--craie) 0%,
+    var(--ocre) 35%,
+    #f0c868 55%,
+    var(--brume) 75%,
+    var(--craie) 100%
+  );
+  background-size: 280% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-texte 6s linear infinite;
+}
+
+@keyframes gradient-texte {
+  0%   { background-position: 0% center; }
+  100% { background-position: 280% center; }
+}
+
+/* — Boutons shimmer + magnétique — */
+.bouton {
+  position: relative;
+  overflow: hidden;
+  will-change: transform;
+}
+
+.bouton::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -110%;
+  width: 55%;
+  height: 100%;
+  background: linear-gradient(
+    105deg,
+    transparent 20%,
+    rgba(255,255,255,0.22) 50%,
+    transparent 80%
+  );
+  transform: skewX(-18deg);
+  pointer-events: none;
+}
+
+.bouton:hover::after {
+  animation: btn-shimmer 0.55s ease forwards;
+}
+
+@keyframes btn-shimmer {
+  0%   { left: -110%; }
+  100% { left: 160%; }
+}
+
+/* — Project card glow + 3D tilt — */
+.projet__cadre {
+  transition:
+    transform 280ms cubic-bezier(0.22, 0.61, 0.36, 1),
+    box-shadow 280ms ease;
+}
+
+.projet__cadre:hover {
+  box-shadow: 0 0 0 1px rgba(217,164,65,0.6), 0 16px 48px rgba(217,164,65,0.18);
+}
+
+/* — Photo membre : dégrisage + zoom au survol — */
+.membre__photo {
+  transition:
+    filter 0.45s ease,
+    transform 0.45s cubic-bezier(0.22, 0.61, 0.36, 1),
+    box-shadow 0.45s ease;
+}
+
+.membre:hover .membre__photo {
+  filter: grayscale(0) brightness(1.06) contrast(1.02);
+  transform: scale(1.06);
+  box-shadow: 0 0 0 2px var(--ocre), 0 8px 24px rgba(217,164,65,0.25);
+}
+
+/* — Service : barre latérale qui s'étire + fond léger — */
+.service {
+  position: relative;
+  transition:
+    background 0.3s ease,
+    padding-left 0.3s ease;
+}
+
+.service::before {
+  content: '';
+  position: absolute;
+  left: -1px; top: 0; bottom: 0;
+  width: 2px;
+  background: var(--ocre);
+  transform: scaleY(0);
+  transform-origin: bottom center;
+  transition: transform 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.service:hover::before {
+  transform: scaleY(1);
+  transform-origin: top center;
+}
+
+.service:hover {
+  background: rgba(217, 164, 65, 0.03);
+  padding-left: 1.2rem;
+}
+
+/* — Étiquettes tech : pop-in en cascade — */
+.etiquettes li {
+  opacity: 0;
+  transform: scale(0.75) translateY(6px);
+  animation: tag-pop 0.32s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes tag-pop {
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.etiquettes li:nth-child(1)  { animation-delay: 0.05s; }
+.etiquettes li:nth-child(2)  { animation-delay: 0.10s; }
+.etiquettes li:nth-child(3)  { animation-delay: 0.15s; }
+.etiquettes li:nth-child(4)  { animation-delay: 0.20s; }
+.etiquettes li:nth-child(5)  { animation-delay: 0.25s; }
+.etiquettes li:nth-child(6)  { animation-delay: 0.30s; }
+.etiquettes li:nth-child(7)  { animation-delay: 0.35s; }
+.etiquettes li:nth-child(8)  { animation-delay: 0.40s; }
+.etiquettes li:nth-child(9)  { animation-delay: 0.45s; }
+.etiquettes li:nth-child(10) { animation-delay: 0.50s; }
+
+/* — Titre section : soulignement qui se dessine — */
+.titre-section {
+  position: relative;
+  display: inline-block;
+}
+
+.titre-section::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--ocre), transparent);
+  transition: width 0.9s cubic-bezier(0.22, 0.61, 0.36, 1) 0.3s;
+}
+
+.reveler--visible .titre-section::after {
+  width: 60%;
+}
+
+/* — Point pulsant sur le rail — */
+.spine__rail span::before {
+  content: '●';
+  display: inline-block;
+  font-size: 0.45em;
+  vertical-align: middle;
+  margin-right: 0.4em;
+  color: var(--ocre);
+  animation: pulse-dot 2.4s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1;   transform: scale(1); }
+  50%       { opacity: 0.25; transform: scale(0.5); }
+}
+
+/* — Focus champ contact : lueur dorée — */
+.champ input:focus,
+.champ textarea:focus {
+  border-color: var(--ocre);
+  box-shadow: 0 0 0 3px rgba(217, 164, 65, 0.18);
+  background: rgba(217, 164, 65, 0.025);
+  outline: none;
+}
+
+.champ input,
+.champ textarea {
+  transition:
+    border-color var(--transition),
+    box-shadow var(--transition),
+    background var(--transition);
+}
+
+/* — Bandeau : pause au survol avec fondu latéral — */
+.bandeau__vignette img {
+  transition: transform 0.45s ease, opacity 0.45s ease;
+}
+
+.bandeau__vignette:hover img {
+  transform: scale(1.07);
+  opacity: 1;
+}
+
+/* — Pied de page : logo flottant — */
+@keyframes float-logo {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-4px); }
+}
+
+.pied__marque {
+  animation: float-logo 4s ease-in-out infinite;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* — Reveler : variantes directionnelles — */
+.reveler--gauche {
+  opacity: 0;
+  transform: translateX(-22px);
+  transition: opacity 0.65s ease, transform 0.65s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.reveler--gauche.reveler--visible {
+  opacity: 1; transform: none;
+}
+.reveler--droite {
+  opacity: 0;
+  transform: translateX(22px);
+  transition: opacity 0.65s ease, transform 0.65s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.reveler--droite.reveler--visible {
+  opacity: 1; transform: none;
+}
+
+/* — Service items : stagger via JS (classes ajoutées) — */
+.service {
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1),
+    background 0.3s ease,
+    padding-left 0.3s ease;
+}
+
+.service--visible {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* — Membre carte : reveal par bloc — */
+.membre {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.membre--visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* — Coordonnée contact : slide reveal — */
+.coordonnee {
+  opacity: 0;
+  transform: translateX(12px);
+  transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.coordonnee--visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* — Reduced motion : tout désactiver — */
+@media (prefers-reduced-motion: reduce) {
+  .curseur-glow,
+  .hero__particule,
+  .hero__titre i,
+  .pied__marque,
+  .spine__rail span::before { animation: none !important; }
+
+  .hero::before { animation: none; }
+
+  .hero__titre i {
+    background: none;
+    -webkit-text-fill-color: inherit;
+    color: inherit;
+  }
+
+  .service,
+  .membre,
+  .coordonnee {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .etiquettes li {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+
+  .titre-section::after { transition: none; }
+}
